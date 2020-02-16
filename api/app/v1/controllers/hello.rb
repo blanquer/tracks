@@ -8,6 +8,11 @@ module Controllers
       def say
         'hi'
       end
+
+      def list_things
+        result = '[ '+ User.all.map(&:to_json).join(',') + ' ]'
+        JSON.pretty_generate(JSON.parse(result))
+      end
     end
   end
 end
