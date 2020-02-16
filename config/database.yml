@@ -4,9 +4,10 @@ development:
   # set this if you are storing utf8 in your mysql database to handle strings
   # like "Réné". Not needed for sqlite. For PostgreSQL use encoding: unicode
   # encoding: utf8
-  host: db
+  host: 127.0.0.1 
   username: root
   password:
+  port: 3306
 
 test:
   adapter: mysql2
@@ -14,7 +15,7 @@ test:
   # set this if you are storing utf8 in your mysql database to handle strings
   # like "Réné". Not needed for sqlite. For PostgreSQL use encoding: unicode
   # encoding: utf8
-  host: db
+  host: 127.0.0.1 
   username: root
   password:
 

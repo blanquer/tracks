@@ -13,22 +13,22 @@
 ActiveRecord::Schema.define(version: 2019_06_18_202817) do
 
   create_table "attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "todo_id"
+    t.bigint "todo_id"
     t.string "file_file_name"
     t.string "file_content_type"
-    t.integer "file_file_size"
+    t.bigint "file_file_size"
     t.datetime "file_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_attachments_on_todo_id"
   end
 
   create_table "contexts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "position", default: 0
+    t.integer "position"
     t.integer "user_id", default: 1
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
     t.string "state", limit: 20, default: "active", null: false
     t.index ["user_id", "name"], name: "index_contexts_on_user_id_and_name"
     t.index ["user_id"], name: "index_contexts_on_user_id"
@@ -92,16 +92,16 @@ ActiveRecord::Schema.define(version: 2019_06_18_202817) do
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "position", default: 0
+    t.integer "position"
     t.integer "user_id", default: 1
-    t.text "description", limit: 16777215
+    t.text "description"
     t.string "state", limit: 20, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
     t.integer "default_context_id"
     t.datetime "completed_at"
     t.string "default_tags"
-    t.datetime "last_reviewed"
+    t.timestamp "last_reviewed"
     t.index ["state"], name: "index_projects_on_state"
     t.index ["user_id", "name"], name: "index_projects_on_user_id_and_name"
     t.index ["user_id", "state"], name: "index_projects_on_user_id_and_state"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_202817) do
     t.integer "context_id", null: false
     t.integer "project_id"
     t.string "description", null: false
-    t.text "notes", limit: 16777215
+    t.text "notes"
     t.string "state", limit: 20, null: false
     t.datetime "start_from"
     t.string "ends_on"
@@ -132,8 +132,8 @@ ActiveRecord::Schema.define(version: 2019_06_18_202817) do
     t.integer "every_count"
     t.integer "weekday"
     t.datetime "completed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "show_always"
     t.index ["state"], name: "index_recurring_todos_on_state"
     t.index ["user_id"], name: "index_recurring_todos_on_user_id"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_202817) do
     t.string "session_id"
     t.text "data"
     t.datetime "updated_at"
-    t.index ["session_id"], name: "sessions_session_id_index"
+    t.index ["session_id"], name: "index_sessions_on_session_id"
   end
 
   create_table "taggings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -167,7 +167,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_202817) do
     t.integer "context_id", null: false
     t.integer "project_id"
     t.string "description", null: false
-    t.text "notes", limit: 16777215
+    t.text "notes"
     t.datetime "created_at"
     t.datetime "due"
     t.datetime "completed_at"
@@ -175,8 +175,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_202817) do
     t.datetime "show_from"
     t.string "state", limit: 20, null: false
     t.integer "recurring_todo_id"
-    t.datetime "updated_at"
-    t.text "rendered_notes", limit: 16777215
+    t.timestamp "updated_at"
     t.index ["context_id"], name: "index_todos_on_context_id"
     t.index ["project_id"], name: "index_todos_on_project_id"
     t.index ["state"], name: "index_todos_on_state"
@@ -211,7 +210,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_202817) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "login", limit: 80, null: false
-    t.string "crypted_password", limit: 60
+    t.string "crypted_password", limit: 60, null: false
     t.string "token"
     t.boolean "is_admin", default: false, null: false
     t.string "first_name"
