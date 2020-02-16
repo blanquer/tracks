@@ -35,5 +35,16 @@ module Tracksapp
 
     # configure Tracks to handle deployment in a subdir
     config.relative_url_root = SITE_CONFIG['subdir'] if SITE_CONFIG['subdir']
+
+    
+    mware = Praxis::MiddlewareApp.for(root: 'api', name: 'my-api')
+    config.middleware.use mware
+
+    Rails.application.config.after_initialize do
+      # Initialize the middleware "After" the main app has initialized
+      # (Not just after the engine is...as we want everything loaded)
+      mware.setup
+    end
+
   end
 end

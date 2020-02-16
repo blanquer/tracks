@@ -1,0 +1,13 @@
+require 'bundler/setup'
+
+ENV['RACK_ENV'] ||= 'development'
+Bundler.require(:default, ENV['RACK_ENV'])
+
+namespace :db do
+  desc 'setup the database'
+  task :migrate do
+      puts "Starting migration"
+      sleep 20
+      puts "Done with migration"
+  end
+end
