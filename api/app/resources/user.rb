@@ -16,6 +16,7 @@ module V1
       property :first_name, dependencies: %i[first_name]
       property :last_name, dependencies: %i[last_name]
       property :is_admin, dependencies: %i[id_admin]
+      property :projects, dependencies: %i[]
     end
   end
 end

@@ -13,6 +13,7 @@ module V1
         attribute :first_name, String, description: 'First name'
         attribute :last_name, String, description: 'Last Name'
         attribute :is_admin, Attributor::Boolean
+        attribute :projects, Attributor::Collection.of(MediaTypes::Project)
       end
 
       view :default do
