@@ -4,7 +4,7 @@ module V1
   module MediaTypes
     class User < Praxis::MediaType
 
-      #domain_model 'V1::Resources::Note'
+      domain_model 'V1::Resources::User'
 
       description ''
 
