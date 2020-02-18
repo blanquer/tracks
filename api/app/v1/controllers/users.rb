@@ -9,7 +9,7 @@ module V1
 
       implements V1::Endpoints::Users
 
-      def index
+      def index(**args)
         display User.all
       end
     end

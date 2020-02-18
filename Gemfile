@@ -36,7 +36,7 @@ gem 'puma', '~> 4.3'
 gem 'paperclip'
 gem 'praxis', :git => 'https://github.com/blanquer/praxis.git', :branch => 'v0.22.pre.2-without-thor'
 gem 'praxis-mapper', '~> 4.5'
-
+gem 'parslet'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.13'

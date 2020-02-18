@@ -170,6 +170,7 @@ GEM
     parallel (1.19.1)
     parser (2.7.0.2)
       ast (~> 2.4.0)
+    parslet (2.0.0)
     praxis-blueprints (3.3)
       activesupport (>= 3)
       attributor (>= 5.1)
@@ -323,6 +324,7 @@ DEPENDENCIES
   mocha
   mysql2 (~> 0.5.3)
   paperclip
+  parslet
   praxis!
   praxis-mapper (~> 4.5)
   puma (~> 4.3)

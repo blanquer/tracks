@@ -1,4 +1,8 @@
 
+require 'praxis/extensions/field_selection'
+# require 'praxis/extensions/attribute_filtering'
+# require 'praxis/plugins/praxis_mapper_plugin'
+
 Praxis::Application.instance.layout do
  map :initializers, 'config/initializers/**/*'
  map :lib, 'lib/**/*'
